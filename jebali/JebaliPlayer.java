@@ -2,6 +2,7 @@ package gj.kalah.player.jebali;
 
 import gj.kalah.player.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class JebaliPlayer implements Player {
 	private static Board game;
@@ -37,7 +38,8 @@ public class JebaliPlayer implements Player {
 		initAlfaBeta(alfabeta);
 		int[] bestMove = new int[2];// [0] valore [1] posizione
 		initBest(bestMove);
-		ArrayList<Integer> possibleMoves = game.possibleMoves(myplayer);
+		List<Integer> possibleMoves = new ArralyList<>();
+		possibleMoves = game.possibleMoves(myplayer);
 		int value = 0;
 		for (int positionMove : possibleMoves) {
 			Board fakeBoard = new Board(game);
@@ -108,7 +110,8 @@ public class JebaliPlayer implements Player {
 			return valuateBoard(board, depth);
 		} else {
 			int value = (player % 2 == myplayer) ? Integer.MIN_VALUE : Integer.MAX_VALUE;
-			ArrayList<Integer> possibleMoves = board.possibleMoves(player);
+			List<Integer> possibleMoves = new ArrayList<>();
+			possibleMoves = board.possibleMoves(player);
 			for (int move : possibleMoves) {
 				Board testBoard = new Board(board);
 				playAgain = testBoard.moveDell(player, move);
