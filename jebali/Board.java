@@ -1,6 +1,7 @@
 package gj.kalah.player.jebali;
 
 import java.util.ArrayList;
+import java.utils.List;
 
 public class Board {
 	private static int size = 14; // dimensione totale board
@@ -17,7 +18,7 @@ public class Board {
 	}
 
 	// Costruttore che crea una board riempiendola con i valori della board in
-	// ingresso. Questa board fittizia sarà necessaria per testare le mosse
+	// ingresso. Questa board fittizia sarÃ  necessaria per testare le mosse
 	// dell'algoritmo di scelta delle mosse implementato nella classe player
 	public Board(Board previousBoard) {
 		for (int i = 0; i < size; i++) {
@@ -88,7 +89,7 @@ public class Board {
 	 * le distrubuisce nelle altre conche e mancala (escluso quello avversario).
 	 * Restituisce un boolean perche se l'ultima pietra finisse nel mancala di chi
 	 * sta giocando, il giocatore potrebbe ripetere la mossa e percio restituisco
-	 * true. Il controllo è delegato ad un altro metodo.
+	 * true. Il controllo Ã¨ delegato ad un altro metodo.
 	 */
 
 	public boolean moveDell(int player, int index) {
@@ -156,7 +157,7 @@ public class Board {
 	}
 
 	/*
-	 * Controllo se l'ultima pietra è finita nel mio mancala. Se cosi fosse
+	 * Controllo se l'ultima pietra Ã¨ finita nel mio mancala. Se cosi fosse
 	 * restituisco un valore true cosi da poter ripetere la mossa.
 	 */
 	private boolean checkMancala(int player, int lastIndex) {
@@ -182,9 +183,9 @@ public class Board {
 	}
 
 	/*
-	 * Il seguente metodo controlla se la partita è finita.Prima controlla se uno
+	 * Il seguente metodo controlla se la partita Ã¨ finita.Prima controlla se uno
 	 * dei due giocatori ha piu di 24 pietre nel suo mancala, in questo per me la
-	 * partita è considerata finita e vinta/persa. Altrimenti scorre le conche di
+	 * partita Ã¨ considerata finita e vinta/persa. Altrimenti scorre le conche di
 	 * uno dei due giocatori e controlla che siano tutte vuote; se risulta finita
 	 * per questo motivo prendo le pietre rimaste nelle conche e le butto nel
 	 * mancala.
@@ -224,7 +225,7 @@ public class Board {
 		}
 	}
 
-	// considero il gioco finito se ho più di 24 pietre nel mancala
+	// considero il gioco finito se ho piÃ¹ di 24 pietre nel mancala
 	private boolean checkEndMancala() {
 		boolean r = false;
 		if (getMancala(0) > 24 || getMancala(1) > 24) {
@@ -236,12 +237,12 @@ public class Board {
 	/*
 	 * Questo metodo restituisce le possibili mosse. Per possibili mosse si
 	 * intendono le posizioni delle conche non vuote di ciascun giocatore. La
-	 * struttura dati più appropriata è un arraylist, poiche non possiamo sapere a
+	 * struttura dati piÃ¹ appropriata Ã¨ un arraylist, poiche non possiamo sapere a
 	 * priori quante mosse a disposione ha un giocatore. Sappiamo che al massimo ne
 	 * ha 6.
 	 * 
 	 */
-	public ArrayList<Integer> possibleMoves(int player) {
+	public List<Integer> possibleMoves(int player) {
 		ArrayList<Integer> pm = new ArrayList<>();
 		int mancala = getMancalaIndex(player);
 		for (int i = (size / 2) * player; i < mancala; i++) {
